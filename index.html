@@ -40,14 +40,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 80px;
+            position: relative;
         }
 
         .level {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
             position: relative;
         }
@@ -91,30 +92,201 @@
             background: linear-gradient(135deg, #e0c3fc 0%, #9bb5ff 100%);
         }
 
+        .org-box.dean-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #666;
+            border: 2px dashed #adb5bd;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .org-box.dean-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
         .org-box.staff {
             background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
             color: #333;
             font-size: 0.9em;
         }
 
-        .connector {
+        /* CONNECTING LINES - Much simpler approach */
+        .line {
             position: absolute;
-            background: #ddd;
-            z-index: -1;
+            background-color: #333;
+            z-index: 1;
         }
 
-        .vertical-connector {
-            width: 2px;
-            height: 30px;
+        .vertical-line {
+            width: 3px;
+            background-color: #333;
+        }
+
+        .horizontal-line {
+            height: 3px;
+            background-color: #333;
+        }
+
+        /* Board to President */
+        .board-president {
+            top: 85px;
             left: 50%;
+            width: 3px;
+            height: 25px;
             transform: translateX(-50%);
-            top: -40px;
         }
 
-        .horizontal-connector {
-            height: 2px;
-            top: 50%;
-            transform: translateY(-50%);
+        /* President to VPs */
+        .president-vps-down {
+            top: 185px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .president-vps-horizontal {
+            top: 210px;
+            left: 20%;
+            width: 60%;
+            height: 3px;
+        }
+
+        .president-vp1 {
+            top: 210px;
+            left: 20%;
+            width: 3px;
+            height: 25px;
+        }
+
+        .president-vp2 {
+            top: 210px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .president-vp3 {
+            top: 210px;
+            right: 20%;
+            width: 3px;
+            height: 25px;
+        }
+
+        /* VP Academic to AVPs */
+        .vp-avps-down {
+            top: 325px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .vp-avps-horizontal {
+            top: 350px;
+            left: 35%;
+            width: 30%;
+            height: 3px;
+        }
+
+        .vp-avp1 {
+            top: 350px;
+            left: 35%;
+            width: 3px;
+            height: 25px;
+        }
+
+        .vp-avp2 {
+            top: 350px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .vp-avp3 {
+            top: 350px;
+            right: 35%;
+            width: 3px;
+            height: 25px;
+        }
+
+        /* AVP2 to Deans */
+        .avp2-deans-down {
+            top: 445px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .avp2-deans-horizontal {
+            top: 470px;
+            left: 38%;
+            width: 24%;
+            height: 3px;
+        }
+
+        .avp2-dean-art {
+            top: 470px;
+            left: 38%;
+            width: 3px;
+            height: 25px;
+        }
+
+        .avp2-dean-humanities {
+            top: 470px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .avp2-dean-business {
+            top: 470px;
+            left: 62%;
+            width: 3px;
+            height: 25px;
+        }
+
+        /* Dean Humanities to Staff */
+        .dean-staff-down {
+            top: 585px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .dean-staff-horizontal {
+            top: 610px;
+            left: 30%;
+            width: 40%;
+            height: 3px;
+        }
+
+        .dean-staff1 {
+            top: 610px;
+            left: 30%;
+            width: 3px;
+            height: 25px;
+        }
+
+        .dean-staff2 {
+            top: 610px;
+            left: 50%;
+            width: 3px;
+            height: 25px;
+            transform: translateX(-50%);
+        }
+
+        .dean-staff3 {
+            top: 610px;
+            right: 30%;
+            width: 3px;
+            height: 25px;
         }
 
         /* Modal Styles */
@@ -271,6 +443,11 @@
                 padding-left: 20px;
                 text-indent: -20px;
             }
+
+            /* Hide lines on mobile for cleaner look */
+            .line {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -279,6 +456,33 @@
         <h1>Mohawk Valley Community College<br>Organizational Chart: Academic Affairs Focus</h1>
         
         <div class="org-chart">
+            <!-- CONNECTING LINES -->
+            <div class="line board-president"></div>
+            
+            <div class="line president-vps-down"></div>
+            <div class="line president-vps-horizontal"></div>
+            <div class="line president-vp1"></div>
+            <div class="line president-vp2"></div>
+            <div class="line president-vp3"></div>
+            
+            <div class="line vp-avps-down"></div>
+            <div class="line vp-avps-horizontal"></div>
+            <div class="line vp-avp1"></div>
+            <div class="line vp-avp2"></div>
+            <div class="line vp-avp3"></div>
+            
+            <div class="line avp2-deans-down"></div>
+            <div class="line avp2-deans-horizontal"></div>
+            <div class="line avp2-dean-art"></div>
+            <div class="line avp2-dean-humanities"></div>
+            <div class="line avp2-dean-business"></div>
+            
+            <div class="line dean-staff-down"></div>
+            <div class="line dean-staff-horizontal"></div>
+            <div class="line dean-staff1"></div>
+            <div class="line dean-staff2"></div>
+            <div class="line dean-staff3"></div>
+
             <!-- Board of Trustees -->
             <div class="level">
                 <div class="org-box" data-info="board">Board of Trustees</div>
@@ -305,7 +509,7 @@
             
             <!-- Academic Deans -->
             <div class="level">
-                <div class="org-box dean" data-info="dean-general">Academic Deans</div>
+                <div class="org-box dean-category" data-info="dean-general">Academic Deans</div>
                 <div class="org-box dean" data-info="dean-art">Dean - School of Art</div>
                 <div class="org-box dean" data-info="dean-humanities">Dean - School of Humanities</div>
                 <div class="org-box dean" data-info="dean-business">Dean - School of Hospitality & Business</div>
@@ -469,8 +673,10 @@
                 `
             },
             'dean-general': {
-                title: 'Academic Deans',
+                title: 'Academic Deans (General Role Description)',
                 content: `
+                    <p><em>This describes the general responsibilities of all Academic Dean positions at MVCC.</em></p>
+                    
                     <p>Each Academic Dean administrates the degree and certificate programs, and course offerings within their respective School.</p>
                     
                     <p><strong>Key Responsibilities:</strong></p>
